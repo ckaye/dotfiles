@@ -1,0 +1,14 @@
+
+# Shortcuts to config files
+alias zshrc="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias eggconf="git config --global -e"
+
+alias be='bundle exec'
+alias g='git'
+
+# Open Github repository
+alias gho="open \`git config -l | grep --color=never 'remote.origin.url' | sed -En 's/remote.origin.url=git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'\`"
+
+# My habits on the command line
+alias habits='\history -1000 -1 | sed "s/^[[:space:]]*[0-9]*[[:space:]]*//" | sort | uniq -c | sort -n -r | head -n 30'
