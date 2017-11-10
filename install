@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+chsh -s /bin/zsh
+
+echo "Installing oh-my-zsh"
+source "./scripts/install_oh_my_zsh.sh"
+
+echo "Installing zsh syntax highlighting"
+git clone --depth 1 git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+echo "Symlinking dotfiles"
+ln -sf ~/.dotfiles/rubygems/gemrc ~/.gemrc
+ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/gitignore ~/.gitignore
+ln -sf ~/.dotfiles/rspec/rspec ~/.rspec
+ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
