@@ -8,6 +8,9 @@ source "./scripts/install_oh_my_zsh.sh"
 echo "Installing zsh syntax highlighting"
 git clone --depth 1 git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
+echo "Installing homebrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 echo "Symlinking dotfiles"
 ln -sf ~/.dotfiles/rubygems/gemrc ~/.gemrc
 ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
@@ -15,3 +18,14 @@ ln -sf ~/.dotfiles/git/gitignore ~/.gitignore
 ln -sf ~/.dotfiles/rspec/rspec ~/.rspec
 ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+echo "Setting up development directories"
+mkdir -p ~/Projects/{misc,personal,work}
+mkdir -p ~/go/{bin,pkg,src}
+
+echo "Installing brew bundle"
+brew bundle
+
+echo "Clean up the brewing"
+brew cleanup
+rm -rf $(brew --cache)
