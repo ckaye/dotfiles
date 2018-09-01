@@ -1,10 +1,12 @@
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 [color]
   ui = auto
 [user]
-  name  = Calvin Kaye
-  email = calvin.f.kaye@gmail.com
+	name = Calvin Kaye
+	email = calvin.f.kaye@gmail.com
+[includeIf "gitdir:~/Projects/work/"]
+  path = ~/Projects/work/.gitconfig
 [fetch]
   prune = true
 [github]
@@ -15,6 +17,14 @@
   tool = opendiff
 [push]
   default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/calvin/.stCommitMsg
 [alias]
   # list aliases
   la = "!git config -l | grep alias | cut -c 7-"
@@ -29,13 +39,13 @@
   brn = "!git rev-parse --abbrev-ref HEAD"
 
   # Push the current branch to the remote "origin", and set it to track the upstream branch
-  pub = "!git push -u origin $(git branch-name)"
+  pub = "!git push -u origin $(git brn)"
 
   # Git fetch and rebase origin/develop
   rbd = ! git f && git rb origin/develop
 
   # Git fetch and rebase origin/master
-  rbm = ! git f && git rb origin/develop
+  rbm = ! git f && git rb origin/master
 
   # Always rebase on collaborative branches rather than merging (preserve maintains merge commits rather than inlining)
   pullrb = "pull --rebase=preserve"
@@ -87,6 +97,9 @@
 
   #Git fetch
   f = fetch
+
+  # reset local branch to remote (untracked files are left untouched)
+  rhlo = "!git f && git reset --hard origin/$(git brn)"
 
   #Git clean untracked files
   cu = clean -f -d
