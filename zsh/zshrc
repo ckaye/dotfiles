@@ -4,7 +4,7 @@ zsh_home_config="$HOME/.dotfiles/zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(autojump bundler docker docker-compose gem history-substring-search ruby tmux tmuxinator zsh-syntax-highlighting)
+plugins=(autojump bundler docker docker-compose gem history-substring-search ruby zsh-syntax-highlighting go)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -14,7 +14,8 @@ export EDITOR="subl -n -w"
 export GOPATH=~/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH="${HOME}/.rbenv/shims:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH=$PATH:GOROOT/bin:GOPATH/bin
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
 
 # Set language encodings
 export LANG=en_US.UTF-8
@@ -23,13 +24,21 @@ export LC_ALL=en_US.UTF-8
 #rbenv init
 eval "$(rbenv init -)"
 
-# This loads nvm
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 #Autojump
 [[ -f $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # Store and load aliases
 [[ -f "$zsh_home_config/aliases" ]] && source "$zsh_home_config/aliases"
 
+# Loads Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Loads Command-line fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Sets kubectl current context rprompt
+autoload -U colors; colors
+source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
