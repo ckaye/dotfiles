@@ -8,6 +8,8 @@ alias g='git'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias la='ls -lhA'
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias lag='la | grep -v grep | grep -i -e VSZ -e'
+alias glong='grep -v grep | grep -A 10 -B 10 -i -e VSZ -e'
 
 # Open Github repository
 alias gho="open \`git config -l | grep --color=never 'remote.origin.url' | sed -En 's/remote.origin.url=git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'\`"
