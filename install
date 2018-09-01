@@ -29,3 +29,7 @@ brew bundle
 echo "Clean up the brewing"
 brew cleanup
 rm -rf $(brew --cache)
+
+echo "Install ITerm2 colour preset"
+mkdir -p ~/Projects/misc/base16-iterm2
+wget https://raw.githubusercontent.com/chriskempson/base16-iterm2/master/base16-colors.dark.256.itermcolors -P ~/Projects/misc/base16-iterm2
