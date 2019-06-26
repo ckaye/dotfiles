@@ -30,6 +30,15 @@ brew "vim"
 brew "wget"
 brew "nvm"
 brew "imagemagick"
+brew "kubectx"
+brew "kubernetes-cli"
+brew "vault"
+
+# cURL-like tool for humans
+brew "httpie"
+
+#a command-line JSON processor
+brew "jq"
 
 tap 'caskroom/cask'
 
@@ -57,6 +66,7 @@ cask 'caffeine'
 cask 'alfred'
 cask 'vagrant'
 cask 'google-backup-and-sync'
+cask 'google-cloud-sdk'
 
 mas "1Password", id: 443987910
 mas "Memory Clean", id: 451444120
