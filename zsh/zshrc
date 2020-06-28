@@ -48,3 +48,5 @@ autoload -U +X bashcompinit && bashcompinit
 
 # Load rbenv
 eval "$(rbenv init -)"
+
+export POWERLINE_CONFIG_COMMAND=$(which powerline-config)
