@@ -1,10 +1,18 @@
 [core]
-	excludesfile = /Users/calvin/.gitignore
+  excludesfile = /Users/calvinkaye/.gitignore
+  hooksPath = /Users/calvinkaye/gitconfig/hooks
 [color]
   ui = auto
 [user]
-	name = Calvin Kaye
-	email = calvin.f.kaye@gmail.com
+  name = Calvin Kaye
+  email = calvin.f.kaye@gmail.com
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[gpg]
+  program = gpg
 [includeIf "gitdir:~/Projects/work/"]
   path = ~/Projects/work/.gitconfig
 [fetch]
@@ -17,14 +25,10 @@
   tool = opendiff
 [push]
   default = simple
-[difftool "sourcetree"]
+[difftool "github"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [commit]
-	template = /Users/calvin/.stCommitMsg
+	gpgsign = true
 [alias]
   # list aliases
   la = "!git config -l | grep alias | cut -c 7-"
