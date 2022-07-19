@@ -15,4 +15,3 @@ Install colour theme for ITerm2:
 1. On iTerm2, go to Preferences > Profiles > Colors
 2. Click on Color Presets > Import
 3. Navigate to and select ~/Projects/misc/base16-iterm2/base16-colors.dark.256
-
