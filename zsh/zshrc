@@ -16,6 +16,9 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
+# Brew shell initialize
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Set KUBECONFIG
 export KUBECONFIG="$HOME/.kube/config"
 
@@ -34,7 +37,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 #Autojump
-[[ -f $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # Store and load aliases
 [[ -f "$zsh_home_config/aliases" ]] && source "$zsh_home_config/aliases"
@@ -52,7 +55,7 @@ autoload -U +X bashcompinit && bashcompinit
 eval "$(rbenv init -)"
 
 # Kubernetes prompt
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
 
 export POWERLINE_CONFIG_COMMAND=$(which powerline-config)
