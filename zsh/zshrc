@@ -9,12 +9,11 @@ plugins=(autojump docker docker-compose history-substring-search zsh-syntax-high
 source $ZSH/oh-my-zsh.sh
 
 #set editor
-export EDITOR="subl -n -w"
+export EDITOR="code --wait"
 
 export GOPATH=~/go
-export GOROOT=/usr/local/opt/go/libexec
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # Brew shell initialize
 eval "$(/opt/homebrew/bin/brew shellenv)"

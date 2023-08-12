@@ -7,12 +7,10 @@
   name = Calvin Kaye
   email = calvin.f.kaye@gmail.com
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[gpg]
-  program = gpg
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [includeIf "gitdir:~/Projects/work/"]
   path = ~/Projects/work/.gitconfig
 [fetch]
@@ -27,8 +25,10 @@
   default = simple
 [difftool "github"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-[commit]
-	gpgsign = true
+[branch "master"]
+  pushRemote = no_push
+[branch "main"]
+  pushRemote = no_push
 [alias]
   # list aliases
   la = "!git config -l | grep alias | cut -c 7-"
@@ -50,6 +50,9 @@
 
   # Git fetch and rebase origin/master
   rbm = ! git f && git rb origin/master
+
+  # Git fetch and rebase origin/main
+  rbma = ! git f && git rb origin/main
 
   # Always rebase on collaborative branches rather than merging (preserve maintains merge commits rather than inlining)
   pullrb = "pull --rebase=preserve"
@@ -107,3 +110,10 @@
 
   #Git clean untracked files
   cu = clean -f -d
+
+  #Delete remote branch in origin
+  bdo = push origin --delete
+
+  #Delete local branch
+  bd = branch -d
+
